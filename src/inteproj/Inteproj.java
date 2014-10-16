@@ -1,0 +1,16 @@
+package inteproj;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Inteproj {
+
+	public static void main(String[] args) {
+		// Our little testing prog
+		List<Product> lista = new ArrayList<Product>();
+		Product vara = new Product("Mango", 8);
+		
+		lista.add(vara);
+	}
+
+}
