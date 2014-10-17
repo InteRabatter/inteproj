@@ -32,5 +32,33 @@ public class ReceiptTest {
 		
 		assertEquals(48.5, k.getTotal(), 0.0000001);
 	}
+	
+	@Test
+	public void DiscountGetTest(){
+		Discount d = new Discount(2, 50);
+		Receipt k = new Receipt(d);
+		
+		assertNotNull(k.getDiscount());
+	}
+	
+	@Test
+	public void DiscountAddTest(){
+		Discount d = new Discount(2, 50);
+		Receipt k = new Receipt();
+		
+		k.setDiscount(d);
+		
+		assertNotNull(k.getDiscount());
+	}
+	
+	@Test
+	public void DiscountRemoveTest(){
+		Discount d = new Discount(2, 50);
+		Receipt k = new Receipt(d);
+		
+		k.removeDiscount();
+		
+		assertNull(k.getDiscount());
+	}
 
 }

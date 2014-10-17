@@ -6,6 +6,15 @@ import java.util.Map.Entry;
 public class Receipt {
 
 	private HashMap<Product, Double> products = new HashMap<Product, Double>();
+	private Discount discount = null;
+	
+	public Receipt(){
+		
+	}
+	
+	public Receipt(Discount disc){
+		this.discount = disc;
+	}
 	
 	public void add(Product p, double unitValue){
 		if(products.containsKey(p)){
@@ -43,5 +52,17 @@ public class Receipt {
 		}
 		
 		return total;
+	}
+	
+	public void setDiscount(Discount disc){
+		this.discount = disc;
+	}
+	
+	public Discount getDiscount(){
+		return this.discount;
+	}
+	
+	public void removeDiscount(){
+		this.discount = null;
 	}
 }
