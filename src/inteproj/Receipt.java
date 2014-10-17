@@ -32,5 +32,16 @@ public class Receipt {
 			
 		}
 		return 0;
-	} 
+	}
+	
+	public double getTotal(){
+		
+		double total = 0;
+		
+		for (Entry<Product, Double> e : products.entrySet()){
+			total += e.getKey().getPrice() * e.getValue();
+		}
+		
+		return total;
+	}
 }
