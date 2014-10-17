@@ -11,6 +11,12 @@ public class Inteproj {
 		Product vara = new Product("Mango", 8);
 		
 		lista.add(vara);
+		
+		Receipt r = new Receipt();
+		r.add(vara, 1);
+		r.add(vara, 1);
+		
+		r.tester();
 	}
 
 }
