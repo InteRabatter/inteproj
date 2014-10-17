@@ -1,6 +1,7 @@
 package inteproj;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class Receipt {
 
@@ -16,15 +17,20 @@ public class Receipt {
 		
 	}
 	
-	public double getLineSubTotal(int lineIndex){
+	public double getLineSubTotal(double lineIndex){
 		
 		// A hashmap does not have index so let's iterate through it and count the iterations.
-		
-		for (entry e : products.entrySet()){
+		int counter = 1;
+				
+		for (Entry<Product, Double> e : products.entrySet()){
 			
-			
+			if(counter == lineIndex){
+				
+				return (double)(e.getKey().getPrice() * e.getValue());
+				
+			}
 			
 		}
-		
+		return 0;
 	} 
 }
