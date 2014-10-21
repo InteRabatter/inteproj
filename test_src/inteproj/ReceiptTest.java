@@ -22,7 +22,7 @@ public class ReceiptTest {
 	public void SubTotalWithDiscountTest(){
 		Receipt k = new Receipt();
 		Product p = new Product("Äpple", 5);
-		Discount d = new Discount(3, 10);
+		Discount d = new Discount(3, 1/10d);
 		
 		p.setDiscount(d);
 		
@@ -51,7 +51,7 @@ public class ReceiptTest {
 	@Test
 	public void TotalWithDiscountTest(){
 		Receipt k = new Receipt();
-		Discount d = new Discount(40, 15);
+		Discount d = new Discount(40, 3/20d);
 		Product p1 = new Product("Äpple", 5);
 		Product p2 = new Product("Päron", 8);
 		Product p3 = new Product("Tomat", 3);

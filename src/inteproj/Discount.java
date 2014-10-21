@@ -7,7 +7,7 @@ public class Discount {
 	
 	public Discount(double minimum, double value){
 		this.minimum = minimum;
-		this.value = value;
+		this.value = value;	// discount value in fractions.
 	}
 	
 	public double getMinimum(){

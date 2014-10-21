@@ -8,8 +8,38 @@ public class Inteproj {
 	public static void main(String[] args) {
 		// Our little testing prog
 		
+		Product vara1 = new Product("Klubba", 10);
+		Product vara2 = new Product("Glass", 12);
+		Product vara3 = new Product("Gurka", 25.90);
+		Product vara4 = new Product("Banan", 19.90);
 		
 		
+		Discount disc1 = new Discount(3, 1/3d);
+		Discount disc2 = new Discount(0, 1/10d);
+		Discount disc3 = new Discount(20, 1/20d);
+		
+		System.out.println(disc1.getValue());
+		System.out.println(disc2.getValue());
+		System.out.println(disc3.getValue());
+		
+		System.out.println("--");
+		
+		vara2.setDiscount(disc1);
+		vara4.setDiscount(disc2);
+		
+		Receipt kvitto = new Receipt();
+		
+		kvitto.setDiscount(disc3);
+		kvitto.add(vara1, 20);
+		kvitto.add(vara2, 5);
+		kvitto.add(vara3, 1.5);
+		kvitto.add(vara4, 2.3);
+		
+		System.out.println(kvitto.getLineSubTotal(1));
+		System.out.println(kvitto.getLineSubTotal(2));
+		System.out.println(kvitto.getLineSubTotal(3));
+		System.out.println(kvitto.getLineSubTotal(4));
+		System.out.println(kvitto.getTotal());
 		
 		
 		/*		2014-10-16
