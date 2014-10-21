@@ -35,8 +35,20 @@ public class Receipt {
 			
 			if(counter == lineIndex){
 				
-				return (double)(e.getKey().getPrice() * e.getValue());
+				Product prod = e.getKey();
+				Discount disc = prod.getDiscount();
 				
+				if(disc == null){
+					return (double)(e.getKey().getPrice() * e.getValue());
+				}else{
+					double normalPrice = prod.getPrice();
+					double discountPrice = prod.getPrice() - (prod.getPrice() * (disc.getValue() / 100));
+					
+					double discProdsCount = Math.floor(e.getValue() / disc.getMinimum()) * disc.getMinimum();
+					double nonDiscProdsCount = e.getValue() % disc.getMinimum();
+					
+					return normalPrice * nonDiscProdsCount + discountPrice * discProdsCount;
+				}
 			}
 			
 		}
@@ -51,6 +63,11 @@ public class Receipt {
 			total += e.getKey().getPrice() * e.getValue();
 		}
 		
+		if(this.discount != null){
+			if(total >= discount.getMinimum()){
+				return total - total * (discount.getValue() / 100);
+			}
+		}
 		return total;
 	}
 	

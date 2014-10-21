@@ -19,6 +19,21 @@ public class ReceiptTest {
 	}
 	
 	@Test
+	public void SubTotalWithDiscountTest(){
+		Receipt k = new Receipt();
+		Product p = new Product("Äpple", 5);
+		Discount d = new Discount(3, 10);
+		
+		p.setDiscount(d);
+		
+		k.add(p, 1);
+		k.add(p, 1);
+		k.add(p, 1);
+		
+		assertEquals(13.5, k.getLineSubTotal(1), 0.0000001);
+	}
+	
+	@Test
 	public void TotalTest(){
 		Receipt k = new Receipt();
 		Product p1 = new Product("Äpple", 5);
@@ -31,6 +46,24 @@ public class ReceiptTest {
 		k.add(p3, 0.5);
 		
 		assertEquals(48.5, k.getTotal(), 0.0000001);
+	}
+	
+	@Test
+	public void TotalWithDiscountTest(){
+		Receipt k = new Receipt();
+		Discount d = new Discount(40, 15);
+		Product p1 = new Product("Äpple", 5);
+		Product p2 = new Product("Päron", 8);
+		Product p3 = new Product("Tomat", 3);
+		
+		k.setDiscount(d);
+		
+		k.add(p1, 2);
+		k.add(p1, 1);
+		k.add(p2, 4);
+		k.add(p3, 0.5);
+		
+		assertEquals(41.225, k.getTotal(), 0.0000001);
 	}
 	
 	@Test
