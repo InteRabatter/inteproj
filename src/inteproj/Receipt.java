@@ -36,7 +36,7 @@ public class Receipt {
 			return prod.getPrice() * products.get(prod);
 		}else{
 			double normalPrice = prod.getPrice();
-			double discountPrice = prod.getPrice() - (prod.getPrice() * (disc.getValue()));
+			double discountPrice = disc.getDiscountedPrice(prod.getPrice());
 			
 			if(disc.getMinimum() == 0){
 				// Special case, if minimum required amount is zero you get a discount on the entire subtotal.
@@ -48,85 +48,29 @@ public class Receipt {
 			
 			return normalPrice * nonDiscProdsCount + discountPrice * discProdsCount;
 		}
-		
-		
-		
-		
-		/*	Commented away old, faulty solution.
-		
-		// A hashmap does not have index so let's iterate through it and count the iterations.
-		int counter = 1;
-		
-		assert products != null;
-		assert products.isEmpty() == false;
-		
-		for (Entry<Product, Double> e : products.entrySet()){
-			
-			if(counter == lineIndex){
-				
-				Product prod = e.getKey();
-				Discount disc = prod.getDiscount();
-				
-				if(disc == null){
-					return (double)(e.getKey().getPrice() * e.getValue());
-				}else{
-					double normalPrice = prod.getPrice();
-					double discountPrice = prod.getPrice() - (prod.getPrice() * (disc.getValue()));
-					
-					if(disc.getMinimum() == 0){
-						// Special case, if minimum required amount is zero you get a discount on the entire subtotal.
-						return discountPrice * e.getValue(); 
-					}
-					
-					double discProdsCount = Math.floor(e.getValue() / disc.getMinimum()) * disc.getMinimum();
-					double nonDiscProdsCount = e.getValue() % disc.getMinimum();
-					
-					return normalPrice * nonDiscProdsCount + discountPrice * discProdsCount;
-				}
-			}
-			counter++;
-		}
-		return 0;	// We tried assert but we don't fully understand it, so here have a zero.
-		
-		*/
 	}
 	
 	public double getTotal(){
 		
 		double total = 0;
 		
-		/* Commented away, we used the below loop instead because it's nicer.
-		for(int i = 0; i < productIndex.size(); i++){
-			total += productIndex.get(i).getPrice() * products.get(productIndex.get(i));
-		}
-		*/
-		
 		for(Entry<Product, Double> e : products.entrySet()){
-			total += e.getValue() * e.getKey().getPrice();
+			Product p = e.getKey();
+			double quantity = e.getValue();
+			
+			if(p.getDiscount() != null)
+				total += p.getDiscount().getDiscountedPrice((p.getPrice())) * quantity;
+			else
+				total += p.getPrice() * quantity;
 		}
 		
 		if(this.discount != null){
 			if(total >= discount.getMinimum()){
-				return total - total * discount.getValue();
+				return discount.getDiscountedPrice(total);
 			}
 		}
 		
 		return total;
-		
-		/* old solution
-		double total = 0;
-		
-		for (Entry<Product, Double> e : products.entrySet()){
-			total += e.getKey().getPrice() * e.getValue();
-		}
-		
-		if(this.discount != null){
-			if(total >= discount.getMinimum()){
-				return total - total * (discount.getValue());
-			}
-		}
-		return total;
-		*/
 	}
 	
 	public void setDiscount(Discount disc){

@@ -22,7 +22,7 @@ public class ReceiptTest {
 	public void SubTotalWithDiscountTest(){
 		Receipt k = new Receipt();
 		Product p = new Product("Äpple", 5);
-		Discount d = new Discount(3, 1/10d);
+		Discount d = new Discount(3, 1/10d, Discount.DiscountType.PERCENTAGE);
 		
 		p.setDiscount(d);
 		
@@ -51,7 +51,7 @@ public class ReceiptTest {
 	@Test
 	public void TotalWithDiscountTest(){
 		Receipt k = new Receipt();
-		Discount d = new Discount(40, 3/20d);
+		Discount d = new Discount(40, 3/20d, Discount.DiscountType.PERCENTAGE);
 		Product p1 = new Product("Äpple", 5);
 		Product p2 = new Product("Päron", 8);
 		Product p3 = new Product("Tomat", 3);
@@ -68,7 +68,7 @@ public class ReceiptTest {
 	
 	@Test
 	public void DiscountGetTest(){
-		Discount d = new Discount(2, 50);
+		Discount d = new Discount(2, 50, Discount.DiscountType.PERCENTAGE);
 		Receipt k = new Receipt(d);
 		
 		assertNotNull(k.getDiscount());
@@ -76,7 +76,7 @@ public class ReceiptTest {
 	
 	@Test
 	public void DiscountAddTest(){
-		Discount d = new Discount(2, 50);
+		Discount d = new Discount(2, 50, Discount.DiscountType.PERCENTAGE);
 		Receipt k = new Receipt();
 		
 		k.setDiscount(d);
@@ -86,7 +86,7 @@ public class ReceiptTest {
 	
 	@Test
 	public void DiscountRemoveTest(){
-		Discount d = new Discount(2, 50);
+		Discount d = new Discount(2, 50, Discount.DiscountType.PERCENTAGE);
 		Receipt k = new Receipt(d);
 		
 		k.removeDiscount();

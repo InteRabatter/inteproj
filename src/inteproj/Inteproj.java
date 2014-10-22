@@ -14,9 +14,9 @@ public class Inteproj {
 		Product vara4 = new Product("Banan", 19.90);
 		
 		
-		Discount disc1 = new Discount(3, 1/3d);
-		Discount disc2 = new Discount(0, 1/10d);
-		Discount disc3 = new Discount(20, 1/20d);
+		Discount disc1 = new Discount(3, 1/3d, Discount.DiscountType.PERCENTAGE);
+		Discount disc2 = new Discount(0, 1/10d, Discount.DiscountType.PERCENTAGE);
+		Discount disc3 = new Discount(20, 1/20d, Discount.DiscountType.PERCENTAGE);
 		
 		System.out.println(disc1.getValue());
 		System.out.println(disc2.getValue());
