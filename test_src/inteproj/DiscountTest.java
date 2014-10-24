@@ -45,5 +45,24 @@ public class DiscountTest {
 		
 		assertEquals(25, r.getTotal(), 0.001);
 	}
+	
+	@Test
+	public void zeroMinimumPurchaseAmountTest(){
+		/*
+		 * EclEmma is claiming we don't have coverage for a discount with a minimumPurchaseAmount == 0
+		 * so we wrote this test specificaly for that.
+		 * EclEmma is still complaining. Bad times :(
+		 * */
+		Discount d = new Discount(0, 1, Discount.DiscountType.ABSOLUTE);
+		
+		Receipt r = new Receipt();
+		
+		Product p = new Product("Godis", 100);
+		p.setDiscount(d);
+		
+		r.add(p, 1);
+		
+		assertEquals(99, r.getTotal(), 0.001);
+	}
 
 }
