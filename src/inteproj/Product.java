@@ -7,11 +7,17 @@ public class Product {
 	private Discount discount = null;
 	
 	public Product(String name, double price){
+		assert !name.isEmpty();
+		assert price > 0;
+		
 		this.name = name;
 		this.price = price;
 	}
 	
 	public Product(String name, double price, Discount disc){
+		assert !name.isEmpty();
+		assert price > 0;
+		
 		this.name = name;
 		this.price = price;
 		this.discount = disc;

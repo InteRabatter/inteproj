@@ -18,9 +18,9 @@ public class Inteproj {
 		Discount disc2 = new Discount(0, 1/10d, Discount.DiscountType.PERCENTAGE);
 		Discount disc3 = new Discount(20, 1/20d, Discount.DiscountType.PERCENTAGE);
 		
-		System.out.println(disc1.getValue());
-		System.out.println(disc2.getValue());
-		System.out.println(disc3.getValue());
+		System.out.println(disc1.getDiscountValue());
+		System.out.println(disc2.getDiscountValue());
+		System.out.println(disc3.getDiscountValue());
 		
 		System.out.println("--");
 		
@@ -34,11 +34,12 @@ public class Inteproj {
 		kvitto.add(vara2, 5);
 		kvitto.add(vara3, 1.5);
 		kvitto.add(vara4, 2.3);
+		kvitto.add(vara4, -20);
 		
-		System.out.println(kvitto.getLineSubTotal(1));
-		System.out.println(kvitto.getLineSubTotal(2));
-		System.out.println(kvitto.getLineSubTotal(3));
-		System.out.println(kvitto.getLineSubTotal(4));
+		System.out.println(kvitto.getItemSubTotal(1));
+		System.out.println(kvitto.getItemSubTotal(2));
+		System.out.println(kvitto.getItemSubTotal(3));
+		System.out.println(kvitto.getItemSubTotal(4));
 		System.out.println(kvitto.getTotal());
 		
 		

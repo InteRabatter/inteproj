@@ -15,7 +15,7 @@ public class ReceiptTest {
 		k.add(p, 1);
 		k.add(p, 1);
 		
-		assertEquals(15, k.getLineSubTotal(1), 0.0000001);
+		assertEquals(15, k.getItemSubTotal(1), 0.0000001);
 	}
 	
 	@Test
@@ -30,7 +30,7 @@ public class ReceiptTest {
 		k.add(p, 1);
 		k.add(p, 1);
 		
-		assertEquals(13.5, k.getLineSubTotal(1), 0.0000001);
+		assertEquals(13.5, k.getItemSubTotal(1), 0.0000001);
 	}
 	
 	@Test

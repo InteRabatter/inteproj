@@ -10,14 +10,14 @@ public class DiscountTest {
 	public void minimumTest() {
 		Discount d = new Discount(3, 10, Discount.DiscountType.PERCENTAGE);
 		
-		assertEquals(3, d.getMinimum(), 0.01);
+		assertEquals(3, d.getMinimumPurchaseAmount(), 0.01);
 	}
 	
 	@Test
 	public void amountTest(){
 		Discount d = new Discount(3, 10, Discount.DiscountType.PERCENTAGE);
 		
-		assertEquals(10, d.getValue(), 0.01);
+		assertEquals(10, d.getDiscountValue(), 0.01);
 	}
 	
 	@Test

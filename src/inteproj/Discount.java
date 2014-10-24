@@ -2,9 +2,9 @@ package inteproj;
 
 public class Discount {
 	
-	private double minimum;
-	private double value;
-	private DiscountType type;
+	private double minimumPurchaseAmount;
+	private double discountValue;
+	private DiscountType typeFlag;
 	
 	public enum DiscountType{
 		PERCENTAGE,
@@ -12,28 +12,35 @@ public class Discount {
 	}
 	
 	public Discount(double minimum, double value, DiscountType typeFlag){
-		this.minimum = minimum;
-		this.value = value;	// discount value in fractions.
-		this.type = typeFlag;
+		assert minimum >= 0;
+		assert value > 0;
+		
+		this.minimumPurchaseAmount = minimum;
+		this.discountValue = value;	// discount value in fractions.
+		this.typeFlag = typeFlag;
 	}
 	
-	public double getMinimum(){
-		return this.minimum;
+	public double getMinimumPurchaseAmount(){
+		return this.minimumPurchaseAmount;
 	}
 	
-	public double getValue(){
-		return this.value;
+	public double getDiscountValue(){
+		return this.discountValue;
 	}
 	
 	public double getDiscountedPrice(double originalPrice){
+		assert originalPrice > 0;
+		
 		double newPrice = 0;
 		
-		switch(type){
+		switch(typeFlag){
 			case PERCENTAGE:
-				newPrice = originalPrice * (1 - value);
+				newPrice = originalPrice * (1 - discountValue);
 			break;
 			case ABSOLUTE:
-				newPrice = originalPrice - value;
+				newPrice = originalPrice - discountValue;
+			break;
+			default:
 			break;
 		}
 		
