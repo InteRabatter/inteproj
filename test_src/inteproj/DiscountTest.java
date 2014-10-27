@@ -127,5 +127,35 @@ public class DiscountTest {
 	public void equivalenceClassPartitioningNr12Test(){
 		Discount d = new Discount(8, 0, Discount.DiscountType.ABSOLUTE);
 	}
+	
+	@Test
+	public void stateMachineTest(){
+		Receipt r = new Receipt();
+		Product banan = new Product("Banan", 9);
+		Product kaffe = new Product("Kaffe", 39);
+		Product tomat = new Product("Tomat", 2.9);
+		Product melon = new Product("Melon", 12);
+		Product apelsin = new Product("Apelsin", 5);
+		Discount d = new Discount(3, 1/3d, Discount.DiscountType.PERCENTAGE);
+		
+		banan.setDiscount(d);
+		
+		r.add(kaffe, 1);
+		r.add(banan, 1);
+		r.removeProduct(kaffe);
+		r.add(tomat, 1);
+		r.add(banan, 1);
+		r.add(melon, 1);
+		r.removeProduct(banan);
+		r.add(apelsin, 1);
+		r.add(banan, 1);
+		r.removeProduct(banan);
+		r.removeProduct(banan);
+		r.add(banan, 1);
+		r.add(banan, 1);
+		r.add(banan, 1);
+		
+		assertEquals(18, r.getItemSubTotal(4), 0.001);
+	}
 
 }

@@ -30,6 +30,13 @@ public class Receipt {
 		}
 	}
 	
+	public void removeProduct(Product prod){
+		if(products.containsKey(prod)){
+			productIndex.remove(prod);
+			products.remove(prod);
+		}
+	}
+	
 	public double getItemSubTotal(int rowNumber){
 		
 		if(rowNumber <= 0) throw new IllegalArgumentException("RowNumber must 1 or higher.");
