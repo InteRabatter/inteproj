@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="InteProj" default="runjunit">
 	<target name="runjunit" depends="compile" description="Run Forest! Run!">
-		<junit printsummaryon="true">
+		<junit printsummary="on">
 			<test name="inteproj.AllTests"></test>
 			<classpath>
-				<pathelement location="C:\Program Files\eclipse\plugins\org.junit_4.10.0.v4_10_0_v20120426-0900\junit.jar"></pathelement>
-				<pathelement location="compiled"></pathelement>
+				<pathelement location="./resources/junit.jar"></pathelement>
+				<pathelement location="./resources/hamcrest.jar"/>
+				<pathelement location="./compiled"></pathelement>
 			</classpath>
+			<formatter type="plain" usefile="false"/>
+			<formatter type="plain"/>
 		</junit>
 	</target>
 	<target name="compile" description="Do the macarena!">
-		<javac srcdir="./src;./test_src" destdir="./compiled" includeantruntime="false" classpath="C:\Program Files\eclipse\plugins\org.apache.ant_1.8.3.v20120321-1730\lib\ant-junit4.jar"></javac>
+		<javac srcdir="./src;./test_src" destdir="./compiled" includeantruntime="false" classpath="./resources/junit.jar"></javac>
 	</target>
 </project>

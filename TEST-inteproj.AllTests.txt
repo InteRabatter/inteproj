@@ -1,0 +1,21 @@
+Testsuite: inteproj.AllTests
+Tests run: 18, Failures: 0, Errors: 0, Time elapsed: 0,029 sec
+
+Testcase: DiscountRemoveTest took 0,005 sec
+Testcase: DiscountAddTest took 0 sec
+Testcase: DiscountGetTest took 0 sec
+Testcase: TotalWithDiscountTest took 0,003 sec
+Testcase: SubTotalWithDiscountTest took 0 sec
+Testcase: TotalTest took 0 sec
+Testcase: SubTotalTest took 0 sec
+Testcase: DiscountRemoveTest took 0 sec
+Testcase: DiscountAddTest took 0 sec
+Testcase: DiscountGetTest took 0 sec
+Testcase: createProductTest took 0 sec
+Testcase: createProductTest2 took 0 sec
+Testcase: ProductPriceTest took 0 sec
+Testcase: zeroMinimumPurchaseAmountTest took 0 sec
+Testcase: discountTypePercentageTest took 0 sec
+Testcase: discountTypeAbsoluteTest took 0 sec
+Testcase: minimumTest took 0 sec
+Testcase: amountTest took 0 sec

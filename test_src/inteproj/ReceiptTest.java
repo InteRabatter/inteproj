@@ -9,7 +9,7 @@ public class ReceiptTest {
 	@Test
 	public void SubTotalTest() {
 		Receipt k = new Receipt();
-		Product p = new Product("Äpple", 5);
+		Product p = new Product("Ã„pple", 5);
 		
 		k.add(p, 1);
 		k.add(p, 1);
@@ -21,7 +21,7 @@ public class ReceiptTest {
 	@Test
 	public void SubTotalWithDiscountTest(){
 		Receipt k = new Receipt();
-		Product p = new Product("Äpple", 5);
+		Product p = new Product("Ã„pple", 5);
 		Discount d = new Discount(3, 1/10d, Discount.DiscountType.PERCENTAGE);
 		
 		p.setDiscount(d);
@@ -36,8 +36,8 @@ public class ReceiptTest {
 	@Test
 	public void TotalTest(){
 		Receipt k = new Receipt();
-		Product p1 = new Product("Äpple", 5);
-		Product p2 = new Product("Päron", 8);
+		Product p1 = new Product("Ã„pple", 5);
+		Product p2 = new Product("PÃ¤ron", 8);
 		Product p3 = new Product("Tomat", 3);
 		
 		k.add(p1, 2);
@@ -52,8 +52,8 @@ public class ReceiptTest {
 	public void TotalWithDiscountTest(){
 		Receipt k = new Receipt();
 		Discount d = new Discount(40, 3/20d, Discount.DiscountType.PERCENTAGE);
-		Product p1 = new Product("Äpple", 5);
-		Product p2 = new Product("Päron", 8);
+		Product p1 = new Product("Ã„pple", 5);
+		Product p2 = new Product("PÃ¤ron", 8);
 		Product p3 = new Product("Tomat", 3);
 		
 		k.setDiscount(d);
