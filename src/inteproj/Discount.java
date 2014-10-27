@@ -14,6 +14,7 @@ public class Discount {
 	public Discount(double minimum, double value, DiscountType typeFlag){
 		if(minimum < 0) throw new IllegalArgumentException("Minimum purchase amount required cannot be negative.");
 		if(value <= 0) throw new IllegalArgumentException("Discount value cannot be 0 or below.");
+		if(value >= 1 && typeFlag == Discount.DiscountType.PERCENTAGE) throw new IllegalArgumentException("The percentage value cannot be 100% or above.");
 		
 		this.minimumPurchaseAmount = minimum;
 		this.discountValue = value;	// discount value in fractions.
@@ -45,5 +46,9 @@ public class Discount {
 		}
 		
 		return newPrice;
+	}
+	
+	public Discount.DiscountType getType(){
+		return this.typeFlag;
 	}
 }

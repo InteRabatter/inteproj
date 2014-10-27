@@ -8,16 +8,16 @@ public class DiscountTest {
 	
 	@Test
 	public void minimumTest() {
-		Discount d = new Discount(3, 10, Discount.DiscountType.PERCENTAGE);
+		Discount d = new Discount(3, 0.1, Discount.DiscountType.PERCENTAGE);
 		
 		assertEquals(3, d.getMinimumPurchaseAmount(), 0.01);
 	}
 	
 	@Test
 	public void amountTest(){
-		Discount d = new Discount(3, 10, Discount.DiscountType.PERCENTAGE);
+		Discount d = new Discount(3, 0.1, Discount.DiscountType.PERCENTAGE);
 		
-		assertEquals(10, d.getDiscountValue(), 0.01);
+		assertEquals(0.1, d.getDiscountValue(), 0.01);
 	}
 	
 	@Test
@@ -47,22 +47,85 @@ public class DiscountTest {
 	}
 	
 	@Test
-	public void zeroMinimumPurchaseAmountTest(){
-		/*
-		 * EclEmma is claiming we don't have coverage for a discount with a minimumPurchaseAmount == 0
-		 * so we wrote this test specificaly for that.
-		 * EclEmma is still complaining. Bad times :(
-		 * */
-		Discount d = new Discount(0, 1, Discount.DiscountType.ABSOLUTE);
-		
-		Receipt r = new Receipt();
-		
-		Product p = new Product("Godis", 100);
+	public void equivalenceClassPartitioningNr2Test(){
+		Discount d = new Discount(5, 20, Discount.DiscountType.ABSOLUTE);
+		Receipt r  = new Receipt();
+		Product p = new Product("Candy", 50);
+
 		p.setDiscount(d);
+		r.add(p, 2);
 		
+		assertEquals(60, r.getTotal(), 0.001);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void equivalenceClassPartitioningNr3Test(){
+		Discount d = new Discount(-1, 4, Discount.DiscountType.PERCENTAGE);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void equivalenceClassPartitioningNr4Test(){
+		Discount d = new Discount(8, -1, Discount.DiscountType.PERCENTAGE);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void equivalenceClassPartitioningNr5Test(){
+		Discount d = new Discount(8, -1, Discount.DiscountType.ABSOLUTE);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void equivalenceClassPartitioningNr6Test(){
+		Discount d = new Discount(8, 1.2, Discount.DiscountType.PERCENTAGE);
+	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void equivalenceClassPartitioningNr7Test(){
+		Discount d = new Discount(8, 100, Discount.DiscountType.ABSOLUTE);
+		Product p = new Product("Balloon", 4.95);
+		
+		p.setDiscount(d);
+	}
+	
+	@Test
+	public void equivalenceClassPartitioningNr8Test(){
+		Discount d = new Discount(0, 0.04, Discount.DiscountType.PERCENTAGE);
+		Receipt r  = new Receipt();
+		Product p = new Product("Blomma", 10);
+		
+		p.setDiscount(d);
 		r.add(p, 1);
 		
-		assertEquals(99, r.getTotal(), 0.001);
+		assertEquals(9.6, r.getTotal(), 0.001);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void equivalenceClassPartitioningNr9Test(){
+		Discount d = new Discount(8, 0, Discount.DiscountType.PERCENTAGE);
+		Receipt r  = new Receipt();
+		Product p = new Product("Blomma", 10);
+		
+		p.setDiscount(d);
+		r.add(p, 8);
+		
+		assertEquals(80, r.getTotal(), 0.001);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void equivalenceClassPartitioningNr10Test(){
+		Discount d = new Discount(8, 1, Discount.DiscountType.PERCENTAGE);
+	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void equivalenceClassPartitioningNr11Test(){
+		Discount d = new Discount(8, 10, Discount.DiscountType.ABSOLUTE);
+		Product p = new Product("Blomma", 10);
+		
+		p.setDiscount(d);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void equivalenceClassPartitioningNr12Test(){
+		Discount d = new Discount(8, 0, Discount.DiscountType.ABSOLUTE);
 	}
 
 }

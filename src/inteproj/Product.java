@@ -40,6 +40,7 @@ public class Product {
 	}
 	
 	public void setDiscount(Discount disc){
+		if(disc.getType() == Discount.DiscountType.ABSOLUTE && disc.getDiscountValue() >= this.price) throw new IllegalStateException("Discount value cannot be equal to product price or above.");
 		this.discount = disc;
 	}
 	
