@@ -47,6 +47,18 @@ public class DiscountTest {
 	}
 	
 	@Test
+	public void zeroPurchaseAmountonReceiptTest(){
+		Discount d = new Discount(0, 1/10d, Discount.DiscountType.PERCENTAGE);
+		Receipt r = new Receipt();
+		Product p = new Product("Ice", 0.1);
+		
+		r.add(p, 500);
+		p.setDiscount(d);
+		
+		assertEquals(45, r.getItemSubTotal(1), 0.001);
+	}
+	
+	@Test
 	public void equivalenceClassPartitioningNr2Test(){
 		Discount d = new Discount(5, 20, Discount.DiscountType.ABSOLUTE);
 		Receipt r  = new Receipt();

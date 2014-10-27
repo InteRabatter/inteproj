@@ -68,7 +68,7 @@ public class ReceiptTest {
 	
 	@Test
 	public void DiscountGetTest(){
-		Discount d = new Discount(2, 50, Discount.DiscountType.PERCENTAGE);
+		Discount d = new Discount(2, 1/2d, Discount.DiscountType.PERCENTAGE);
 		Receipt k = new Receipt(d);
 		
 		assertNotNull(k.getDiscount());
@@ -76,7 +76,7 @@ public class ReceiptTest {
 	
 	@Test
 	public void DiscountAddTest(){
-		Discount d = new Discount(2, 50, Discount.DiscountType.PERCENTAGE);
+		Discount d = new Discount(2, 1/2d, Discount.DiscountType.PERCENTAGE);
 		Receipt k = new Receipt();
 		
 		k.setDiscount(d);
@@ -86,7 +86,7 @@ public class ReceiptTest {
 	
 	@Test
 	public void DiscountRemoveTest(){
-		Discount d = new Discount(2, 50, Discount.DiscountType.PERCENTAGE);
+		Discount d = new Discount(2, 1/2d, Discount.DiscountType.PERCENTAGE);
 		Receipt k = new Receipt(d);
 		
 		k.removeDiscount();

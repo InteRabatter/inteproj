@@ -16,7 +16,7 @@ public class ProductCreateTest {
 	@Test
 	public void createProductTest2(){
 		// Let's test the second constructor! Why? Because we must have 100% coverage!
-		Discount d = new Discount(4, 20, Discount.DiscountType.PERCENTAGE);
+		Discount d = new Discount(4, 1/5d, Discount.DiscountType.PERCENTAGE);
 		Product p = new Product("Banan", 15, d);
 		assertEquals("Banan", p.getName());
 	}
@@ -29,7 +29,7 @@ public class ProductCreateTest {
 	
 	@Test
 	public void DiscountGetTest(){
-		Discount d = new Discount(4, 20, Discount.DiscountType.PERCENTAGE);
+		Discount d = new Discount(4, 1/5d, Discount.DiscountType.PERCENTAGE);
 		Product p = new Product("Banan", 15, d);
 		
 		assertNotNull(p.getDiscount());
@@ -37,7 +37,7 @@ public class ProductCreateTest {
 	
 	@Test
 	public void DiscountAddTest(){
-		Discount d = new Discount(4, 20, Discount.DiscountType.PERCENTAGE);
+		Discount d = new Discount(4, 1/5d, Discount.DiscountType.PERCENTAGE);
 		Product p = new Product("Banan", 15);
 		p.setDiscount(d);
 		
@@ -46,7 +46,7 @@ public class ProductCreateTest {
 	
 	@Test
 	public void DiscountRemoveTest(){
-		Discount d = new Discount(4, 20, Discount.DiscountType.PERCENTAGE);
+		Discount d = new Discount(4, 1/5d, Discount.DiscountType.PERCENTAGE);
 		Product p = new Product("Banan", 15, d);
 		p.removeDiscount();
 		
