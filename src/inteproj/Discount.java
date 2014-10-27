@@ -12,8 +12,8 @@ public class Discount {
 	}
 	
 	public Discount(double minimum, double value, DiscountType typeFlag){
-		assert minimum >= 0;
-		assert value > 0;
+		if(minimum < 0) throw new IllegalArgumentException("Minimum purchase amount required cannot be negative.");
+		if(value <= 0) throw new IllegalArgumentException("Discount value cannot be 0 or below.");
 		
 		this.minimumPurchaseAmount = minimum;
 		this.discountValue = value;	// discount value in fractions.
@@ -29,7 +29,7 @@ public class Discount {
 	}
 	
 	public double getDiscountedPrice(double originalPrice){
-		assert originalPrice > 0;
+		if(originalPrice <= 0) throw new IllegalArgumentException("The starting price cannot be 0 or below.");
 		
 		double newPrice = 0;
 		

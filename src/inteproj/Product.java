@@ -7,16 +7,16 @@ public class Product {
 	private Discount discount = null;
 	
 	public Product(String name, double price){
-		assert !name.isEmpty();
-		assert price > 0;
+		if(name.isEmpty()) throw new IllegalArgumentException("Name cannot be empty");
+		if(price <= 0) throw new IllegalArgumentException("Price cannot be 0 or below.");
 		
 		this.name = name;
 		this.price = price;
 	}
 	
 	public Product(String name, double price, Discount disc){
-		assert !name.isEmpty();
-		assert price > 0;
+		if(name.isEmpty()) throw new IllegalArgumentException("Name cannot be empty.");
+		if(price <= 0) throw new IllegalArgumentException("Price cannot be 0 or below.");
 		
 		this.name = name;
 		this.price = price;

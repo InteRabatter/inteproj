@@ -19,8 +19,8 @@ public class Receipt {
 	}
 	
 	public void add(Product prod, double unitValue){
-		assert unitValue >=0;
-		assert prod != null;
+		if(unitValue < 0) throw new IllegalArgumentException("unitValue cannot be negative.");
+		if(prod == null) throw new IllegalArgumentException("Product must not be null.");
 		
 		if(products.containsKey(prod)){	// Check if the product exists in the HashMap
 			products.put(prod, unitValue + products.get(prod));
@@ -32,13 +32,12 @@ public class Receipt {
 	
 	public double getItemSubTotal(int rowNumber){
 		
-		assert rowNumber > 0;
+		if(rowNumber <= 0) throw new IllegalArgumentException("RowNumber must 1 or higher.");
 		
 		Product prod = productIndex.get(rowNumber - 1);
 		Discount disc = prod.getDiscount();
 		
 		if(disc == null){
-			assert prod.getPrice() * products.get(prod) > 0;
 			return prod.getPrice() * products.get(prod);
 		}else{
 			double normalPrice = prod.getPrice();
@@ -46,14 +45,12 @@ public class Receipt {
 			
 			if(disc.getMinimumPurchaseAmount() == 0){
 				// Special case, if minimum required amount is zero you get a discount on the entire subtotal.
-				assert discountPrice * products.get(prod) > 0;
 				return discountPrice * products.get(prod); 
 			}
 			
 			double discProdsCount = Math.floor(products.get(prod) / disc.getMinimumPurchaseAmount()) * disc.getMinimumPurchaseAmount();
 			double nonDiscProdsCount = products.get(prod) % disc.getMinimumPurchaseAmount();
 			
-			assert normalPrice * nonDiscProdsCount + discountPrice * discProdsCount > 0;
 			return normalPrice * nonDiscProdsCount + discountPrice * discProdsCount;
 		}
 	}
@@ -74,12 +71,10 @@ public class Receipt {
 		
 		if(this.discount != null){
 			if(total >= discount.getMinimumPurchaseAmount()){
-				assert discount.getDiscountedPrice(total) > 0;
 				return discount.getDiscountedPrice(total);
 			}
 		}
 		
-		assert total > 0;
 		return total;
 	}
 	
