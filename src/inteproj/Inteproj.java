@@ -34,7 +34,7 @@ public class Inteproj {
 		kvitto.add(vara2, 5);
 		kvitto.add(vara3, 1.5);
 		kvitto.add(vara4, 2.3);
-		kvitto.add(vara4, -20);
+		kvitto.add(vara4, 2);
 		
 		System.out.println(kvitto.getItemSubTotal(1));
 		System.out.println(kvitto.getItemSubTotal(2));
