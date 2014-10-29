@@ -3,7 +3,7 @@ package inteproj;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inteproj {
+public class Inteproj{
 
 	public static void main(String[] args) {
 		// Our little testing prog
