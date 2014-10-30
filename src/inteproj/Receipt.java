@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+/*
+ * Class Receipt
+ * Klassen Receipt hanterar kvittot och uträkningar av priser rad för rad på kvittot och ger 
+ * en slutsumma på alla inmatade eventuella varor.
+ * 
+ * */
 public class Receipt {
 
 	private HashMap<Product, Double> products = new HashMap<Product, Double>();
@@ -18,6 +24,10 @@ public class Receipt {
 		this.discount = disc;
 	}
 	
+	/*
+	 * Metoden add() lägger till ett objekt av typen Product till både Hashmapen products och ArrayListen productIndex.
+	 * unitValue definierar kvantiteten av produkten.
+	 * */
 	public void add(Product prod, double unitValue){
 		if(unitValue < 0) throw new IllegalArgumentException("unitValue cannot be negative.");
 		if(prod == null) throw new IllegalArgumentException("Product must not be null.");
@@ -37,6 +47,10 @@ public class Receipt {
 		}
 	}
 	
+	
+	/*
+	 Metoden beräknar och returnerar ett värde motsvarande en enstaka rad på kvittot
+	 * */
 	public double getItemSubTotal(int rowNumber){
 		
 		if(rowNumber <= 0) throw new IllegalArgumentException("RowNumber must 1 or higher.");
@@ -62,6 +76,9 @@ public class Receipt {
 		}
 	}
 	
+	/*
+	 Metoden returnerar summan av kostnaderna för alla varor på kvittot inklusive eventuella rabatter  
+	 */
 	public double getTotal(){
 		
 		double total = 0;

@@ -1,5 +1,12 @@
 package inteproj;
 
+
+/*
+ Klassen Discount innehåller metoder för att kunna lägga till och ändra rabatter på enskilda varor, och dessutom en metod för att
+ beräkna det rabatterade priset på en vara om den är rabatterad.
+ */
+
+
 public class Discount {
 	
 	private double minimumPurchaseAmount;
@@ -29,6 +36,11 @@ public class Discount {
 		return this.discountValue;
 	}
 	
+	/*
+	 Metoden tar emot ett orginalpris och returnerar ett rabatterat pris som varierar beroende på vilken sorts
+	 rabatt det är på varan.
+	 */
+	
 	public double getDiscountedPrice(double originalPrice){
 		if(originalPrice <= 0) throw new IllegalArgumentException("The starting price cannot be 0 or below.");
 		
@@ -42,7 +54,7 @@ public class Discount {
 				newPrice = originalPrice - discountValue;
 			break;
 			default:
-			break;
+				throw new IllegalStateException("The discount-type has not been defined.");
 		}
 		
 		return newPrice;

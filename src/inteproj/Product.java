@@ -1,5 +1,10 @@
 package inteproj;
 
+
+/*
+ Klassen Product håller koll på information om varornas namn och orginalpris, och om en vara har en eventuell rabatt 
+ */
+
 public class Product {
 
 	private String name;
@@ -39,8 +44,12 @@ public class Product {
 		return this.discount;
 	}
 	
+	/*
+	 Metoden kontrollerar så att en rabatt inte kan vara större eller lika med priset på produkten.
+	 */
 	public void setDiscount(Discount disc){
-		if(disc.getType() == Discount.DiscountType.ABSOLUTE && disc.getDiscountValue() >= this.price) throw new IllegalStateException("Discount value cannot be equal to product price or above.");
+		if(disc.getType() == Discount.DiscountType.ABSOLUTE && disc.getDiscountValue() >= this.price)
+			throw new IllegalStateException("Discount value cannot be equal to product price or above.");
 		this.discount = disc;
 	}
 	
