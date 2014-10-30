@@ -124,7 +124,7 @@ public class DiscountTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void equivalenceClassPartitioningNr10Test(){
-		Discount d = new Discount(8, 1, Discount.DiscountType.PERCENTAGE);
+		new Discount(8, 1, Discount.DiscountType.PERCENTAGE);
 	}
 	
 	@Test(expected=IllegalStateException.class)
@@ -137,7 +137,7 @@ public class DiscountTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void equivalenceClassPartitioningNr12Test(){
-		Discount d = new Discount(8, 0, Discount.DiscountType.ABSOLUTE);
+		new Discount(8, 0, Discount.DiscountType.ABSOLUTE);
 	}
 	
 	@Test
